@@ -1,6 +1,6 @@
 # firebase-authentication (quasar-app-extension-firebase-authentication)
 
-This extension allow a developer to add basic core firebase authentication to their application. The main objectives are: **Register Users & Log In**
+This extension allows a developer to add basic core firebase authentication to their application. The main objectives are: **Register Users & Log In**
 
 ## Prerequisites
 
@@ -15,11 +15,12 @@ This extension allow a developer to add basic core firebase authentication to th
 
 **Uninstall:**
 
-`quasar ext --add @quasar/firebase-authentication`
+`quasar ext --remove @quasar/firebase-authentication`
 
 ## Dependancies
 
 - Quasar's dotenv (https://github.com/quasarframework/app-extension-dotenv)
+
 `quasar ext --add @quasar/donenv`
 
 ## Usage
@@ -44,4 +45,5 @@ Once that file is created, get your api key from your firebase console, and then
 ## License
 
 Copyright (c) 2019-present Adam K. Purdy
+
 [MIT License](https://en.wikipedia.org/wiki/MIT_License)
