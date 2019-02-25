@@ -1,0 +1,26 @@
+{
+  "name": "quasar-app-extension-firebase-authentication",
+  "version": "1.0.0-beta.1",
+  "description": "Quasar UI Firebase Authentication App Extension",
+  "author": "Adam K. Purdy <admin@kpapro.com>",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "bugs": "https://github.com/kpapro/app-extension-firebase/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpapro/app-extension-firebase.git"
+  },
+  "homepage": "https://github.com/kpapro/app-extension-firebase",
+  "license": "MIT",
+  "keywords":["quasar", "app", "app extension", "extension", "firebase", "firebase-authentication"],
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "dependencies": {
+    "firebase": "^5.8.4",
+    "vuelidate": "^0.7.4"
+  }
+}
