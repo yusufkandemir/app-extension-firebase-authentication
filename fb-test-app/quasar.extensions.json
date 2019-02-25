@@ -3,6 +3,5 @@
     "env_development": ".env.dev",
     "env_production": ".env.prod",
     "common_root_object": "firebaseConfig"
-  },
-  "firebase-authentication": {}
+  }
 }

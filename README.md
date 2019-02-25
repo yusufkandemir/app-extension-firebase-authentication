@@ -13,9 +13,17 @@ This extension allows a developer to add basic core firebase authentication to t
 
 `quasar ext --add @quasar/firebase-authentication`
 
+While in dev:
+
+`quasar ext --add firebase-authentication --skip-pkg`
+
 **Uninstall:**
 
 `quasar ext --remove @quasar/firebase-authentication`
+
+While in dev:
+
+`quasar ext --remove firebase-authentication --skip-pkg`
 
 ## Dependancies
 
@@ -24,6 +32,10 @@ This extension allows a developer to add basic core firebase authentication to t
 `quasar ext --add @quasar/donenv`
 
 ## Usage
+
+In order to use this extension, either add it to your app, or take it for a test run in the test app location in this app extension. ***fb-test-app***
+
+Note: Test app has had it's firebase-authentication extension removed to allow a fresh start.
 
 1. Add the dotenv extension and follow the prompts. The root object must be named: **firebaseConfig**. This is the name of the config object that will be place into the process.env object during build time.
 
@@ -34,6 +46,8 @@ This extension allows a developer to add basic core firebase authentication to t
 `{ path: '/login', name: 'Login', component: () => import('components/Q-AE-Auth.vue') },`
 
 `{ path: '/register', name: 'Register', component: () => import('components/Q-AE-Auth.vue') }`
+
+If after the installation, you would like to modify your firebase authentication code for any reason, you can do so in the component installed from the app extension.
 
 ## Configuration
 
