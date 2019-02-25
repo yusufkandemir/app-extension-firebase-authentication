@@ -29,7 +29,7 @@ While in dev:
 
 - Quasar's dotenv (https://github.com/quasarframework/app-extension-dotenv)
 
-`quasar ext --add @quasar/donenv`
+`quasar ext --add @quasar/dotenv`
 
 ## Usage
 
