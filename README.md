@@ -35,7 +35,7 @@ While in dev:
 
 In order to use this extension, either add it to your app, or take it for a test run in the test app location in this app extension. ***fb-test-app***
 
-Note: Test app has had it's firebase-authentication extension removed to allow a fresh start.
+Note: The test app has had it's dotenv & firebase-authentication extensions removed to allow a fresh start.
 
 1. Add the dotenv extension and follow the prompts. The root object must be named: **firebaseConfig**. This is the name of the config object that will be place into the process.env object during build time.
 
