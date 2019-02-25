@@ -1,3 +1,3 @@
-# Quasar App
+# Quasar Extension Test App
 
-> WIP
+A test app to pull in the firebase authentication extension

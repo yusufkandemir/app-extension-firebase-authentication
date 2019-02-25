@@ -1,8 +1,8 @@
 {
   "name": "fb-test-app",
   "version": "0.0.1",
-  "description": "The test application for firebase-authentication to be tested in.",
-  "productName": "Quasar Ext Test App: Firebase",
+  "description": "Test application for app-extension-firebase-authentication.",
+  "productName": "Quasar Ext Test App: Firebase Authentication",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Adam K. Purdy <admin@kpapro.com>",
   "private": true,
