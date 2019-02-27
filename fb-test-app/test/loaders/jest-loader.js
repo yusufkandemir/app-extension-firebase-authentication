@@ -10,8 +10,8 @@ module.exports = async function (source) {
   const extension = (options && options.extension) || '_jest.spec.js'
   const dir = `${this.context}/__tests__`
   console.log(`Created test file: ${filename}`)
-  if (!fs.existsSync(dir)){
-    fs.mkdirSync(dir);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
   }
   const code = source.replace(/\n{2,}/, '')
   const dest = `${dir}/${filename}${extension}`

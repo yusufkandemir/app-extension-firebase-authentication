@@ -13,17 +13,9 @@ This extension allows a developer to add basic core firebase authentication to t
 
 `quasar ext --add @quasar/firebase-authentication`
 
-While in dev:
-
-`quasar ext --add firebase-authentication --skip-pkg`
-
 **Uninstall:**
 
 `quasar ext --remove @quasar/firebase-authentication`
-
-While in dev:
-
-`quasar ext --remove firebase-authentication --skip-pkg`
 
 ## Dependancies
 
@@ -41,7 +33,7 @@ Note: The test app has had it's dotenv & firebase-authentication extensions remo
 
 2. Next, install the firebase-authentication extension.
 
-3. Last, add a routes for the login, and register user paths. For example:
+3. Last, add a route for the login, and register user paths. For example:
 
 `{ path: '/login', name: 'Login', component: () => import('components/Q-AE-Auth.vue') },`
 
@@ -55,6 +47,14 @@ You must add at least one .env file that you named when installing the dotenv ap
 `/quasar.extensions.json`
 
 Once that file is created, get your api key from your firebase console, and then add the key into that .env file. Formatting is necessary for the environment file to be handled correctly. Here is an example:
+
+![](/fb-test-app/src/statics/envFile.jpg)
+
+## Roadmap
+
+- [ ] Dynamic importing of other Quasar extensions
+- [ ] User Roles & Permissions
+- [ ] Optional integration with Firestore & Vuefire
 
 ## License
 

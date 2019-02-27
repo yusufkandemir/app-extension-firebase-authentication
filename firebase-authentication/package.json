@@ -13,13 +13,21 @@
   },
   "homepage": "https://github.com/kpapro/app-extension-firebase",
   "license": "MIT",
-  "keywords":["quasar", "app", "app extension", "extension", "firebase", "firebase-authentication"],
+  "keywords": [
+    "quasar",
+    "app",
+    "app extension",
+    "extension",
+    "firebase",
+    "firebase-authentication"
+  ],
   "engines": {
     "node": ">= 8.9.0",
     "npm": ">= 5.6.0",
     "yarn": ">= 1.6.0"
   },
   "dependencies": {
+    "execa": "^1.0.0",
     "firebase": "^5.8.4",
     "vuelidate": "^0.7.4"
   }

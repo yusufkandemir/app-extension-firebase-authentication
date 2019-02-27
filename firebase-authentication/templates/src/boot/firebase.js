@@ -1,17 +1,15 @@
 import firebase from 'firebase/app'
-import 'firebase/firestore'
 require('firebase/auth')
 
 export default ({ app, router, Vue }) => {
   // Initialize app
   const currentConfig = process.env.firebaseConfig
 
-  // console.log('PROCESS ENV OBJECT', process.env)
+  console.log('PROCESS ENV OBJECT', process.env)
   // Make sure the firebase keys have been set accordingly
   if (currentConfig) {
     firebase.initializeApp(currentConfig)
     // Initialize Cloud Firestore through Firebase
-    // const firestore = firebase.firestore()
 
     // Add props to our Vue instance for easy access
     // in our app

@@ -12,19 +12,18 @@
 // the project's config changing)
 
 // cypress/plugins/index.js
-
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   // console.log(config); // see what all is in here!
 
-
   // Chrome:: Hack for shaking AUT. Cypress Issue: https://github.com/cypress-io/cypress/issues/1620
   on('before:browser:launch', (browser = {}, args) => {
+    console.log('THIS IS THE CONFIG', config)
     if (browser.name === 'chrome') {
-      args.push('--disable-blink-features=RootLayerScrolling');
-      return args;
+      args.push('--disable-blink-features=RootLayerScrolling')
+      return args
     }
-    return true;
-  });
-};
+    return true
+  })
+}

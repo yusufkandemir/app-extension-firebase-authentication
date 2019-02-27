@@ -1,20 +1,27 @@
 <template>
-  <form class='authentication'>
+  <form class="authentication">
     <h4>{{ $route.name }}</h4>
     <q-input
+      data-cy="email"
       label="EMAIL"
+      hint=""
       v-model="email"
       type="email"
       @input="delayTouch($v.email, $options.touchMap)"
       :error="$v.email.$error"
+      error-message="Please provide a valid email"
     />
     <q-input
+      data-cy="password"
       label="PASSWORD"
+      hint=""
+      ref="passwordField"
       v-model="password"
       :type="isPwd ? 'password' : 'text'"
-      :error="$v.password.$error"
       @input="delayTouch($v.password, $options.touchMap)"
-      @keyup.enter="authenticate"
+      @keyup.enter="authenticate(); $event.target.blur()"
+      :error="$v.password.$error"
+      error-message="Please provide a password"
     >
       <template v-slot:append>
         <q-icon
@@ -26,12 +33,15 @@
     </q-input>
     <q-input
       v-if="isRegisterUser"
+      data-cy="verifyPassword"
       label="VERIFY PASSWORD"
+      hint=""
       v-model="passwordMatch"
       :type="isPwd ? 'password' : 'text'"
       :error="$v.passwordMatch.$error"
+      error-message="Please provide matching password"
       @input="delayTouch($v.passwordMatch, $options.touchMap)"
-      @keyup.enter="authenticate"
+      @keyup.enter="authenticate(); $event.target.blur()"
     >
       <template v-slot:append>
         <q-icon
@@ -43,21 +53,22 @@
     </q-input>
     <div class="flex justify-end">
       <q-btn
+        data-cy="submit"
         class="q-mt-lg"
         color="primary"
         :label="getAuthType"
         :loading="loading"
-        @click="authenticate()"
+        @click="authenticate"
       >
         <template v-slot:loading>
           <q-spinner-gears></q-spinner-gears>
         </template>
       </q-btn>
     </div>
-    <p v-if="!isRegisterUser" class="text-body1">
+    <p v-if="!isRegisterUser" class="text-body1" data-cy="userRegLink">
       Create a <router-link to='/register'>new user</router-link>.
     </p>
-    <p v-else class="text-body1">
+    <p v-else class="text-body1" data-cy="loginLink">
       <router-link to="/login">Log In</router-link>
     </p>
   </form>
@@ -72,6 +83,9 @@ export default {
   // Top level prop in our options object to set and hold our
   // timer for our validations
   touchMap: new WeakMap(),
+  created () {
+    console.log(this.$v)
+  },
   computed: {
     isRegisterUser () {
       return this.$route.name === 'Register'
@@ -82,16 +96,16 @@ export default {
   },
   data () {
     return {
-      email: '',
+      email: null,
       isPwd: true,
       loading: false,
-      password: '',
-      passwordMatch: ''
+      password: null,
+      passwordMatch: null
     }
   },
   validations: {
     email: { required, email },
-    password: {},
+    password: { required },
     passwordMatch: {
       // eslint-disable-next-line func-names
       sameAsPassword: sameAs(function () {
@@ -106,7 +120,6 @@ export default {
       this.performAuthentication()
         .then((user) => {
           this.loading = false
-          this.resetFormFields()
           // If you want to push the user further
           // into your app uncomment the line below and add your route
           // this.$router.push('/SOME_AUTHENTICATION_GUARDED_ROUTE')
@@ -114,8 +127,9 @@ export default {
           this.$q.notify({
             classes: 'text-weight-bold text-center',
             color: 'positive',
-            message: `Success. Check your console for your current user object`
+            message: `Success. Check your console for your current user object.`
           })
+          this.resetFormFields()
         })
         .catch((error) => {
           console.error('FAILURE:', error)
@@ -134,12 +148,12 @@ export default {
         this.$q.notify({
           classes: 'text-weight-bold text-center',
           color: 'negative',
-          message: 'Your credentials are invalid'
+          message: 'Your credentials are invalid.'
         })
         setTimeout(() => {
           this.loading = false
         }, 1000)
-        throw new Error('Credentials are invalid')
+        throw new Error('Credentials are invalid.')
       }
       if (this.isRegisterUser && this.$v.passwordMatch.$invalid) {
         this.$v.password.$touch()
@@ -161,9 +175,9 @@ export default {
         : this.$login(this.email, this.password)
     },
     resetFormFields () {
-      this.email = ''
-      this.password = ''
-      this.passwordMatch = ''
+      this.email = null
+      this.password = null
+      this.passwordMatch = null
       this.$v.$reset()
     },
     delayTouch

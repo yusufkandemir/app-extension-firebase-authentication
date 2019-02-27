@@ -4,9 +4,9 @@ const routes = [
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '/', name: 'Login', component: () => import('pages/Index.vue') },
-      { path: '/login', name: 'Login', component: () => import('components/Q-AE-Auth.vue') },
-      { path: '/register', name: 'Register', component: () => import('components/Q-AE-Auth.vue') }
+      { path: '/', name: 'Index', component: () => import('pages/Index.vue') }
+      // { path: '/login', name: 'Login', component: () => import('components/Q-AE-Auth.vue') },
+      // { path: '/register', name: 'Register', component: () => import('components/Q-AE-Auth.vue') }
     ]
   }
 ]
