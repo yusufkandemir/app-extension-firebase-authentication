@@ -6,12 +6,7 @@
 
 <script>
 export default {
-  name: 'App',
-  created () {
-    if (window.Cypress) {
-      window.app = this
-    }
-  }
+  name: 'App'
 }
 </script>
 

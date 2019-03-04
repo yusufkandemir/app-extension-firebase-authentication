@@ -3,6 +3,7 @@
   "version": "1.0.0-beta.1",
   "description": "Quasar UI Firebase Authentication App Extension",
   "author": "Adam K. Purdy <admin@kpapro.com>",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"No test specified\" && exit 0"
   },

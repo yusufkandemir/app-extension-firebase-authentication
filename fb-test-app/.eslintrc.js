@@ -7,8 +7,7 @@ module.exports = {
   },
 
   env: {
-    browser: true,
-    'cypress/globals': true
+    browser: true
   },
 
   extends: [
@@ -20,8 +19,7 @@ module.exports = {
 
   // required to lint *.vue files
   plugins: [
-    'vue',
-    'cypress'
+    'vue'
   ],
 
   globals: {

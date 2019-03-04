@@ -23,7 +23,7 @@ localVue.use(Quasar)
 
 // https://eddyerburgh.me/mock-vuex-in-vue-unit-tests
 export const mountQuasar = (component, options = {}) => {
-  const app = {}
+  const app= {}
   const store = new Vuex.Store({})
   const router = new VueRouter()
 
@@ -55,7 +55,7 @@ export const mountQuasar = (component, options = {}) => {
     localVue: localVue,
     store,
     router,
-    mocks: { $t, $tc, $n, $d },
+    mocks:{ $t, $tc, $n, $d },
     // Injections for Components with a QPage root Element
     provide: {
       pageContainer: true,

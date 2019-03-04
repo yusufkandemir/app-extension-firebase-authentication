@@ -10,28 +10,6 @@
 //
 //
 
-import firebaseApp from 'firebase'
-
-console.log('THIS IS THE COMMANDS FILE IN CYPRESS', process.env)
-
-Cypress.Commands.add('login', () => {
-  cy.log('Firebase Signin')
-  try {
-    firebaseApp.auth().signInWithEmailAndPassword('adamp@kpapro.com', 'newpassword!')
-      .then()
-  } catch (e) {
-    console.log(e)
-  }
-})
-
-Cypress.Commands.add('signOut', () => {
-  firebaseApp.auth().signOut()
-})
-
-Cypress.Commands.add('loginUser', () => {
-  cy.get('.registration-cards .q-card:nth-child(1) > .q-card-media').click({ force: true })
-})
-
 // these two commands let you persist local storage between tests
 const LOCAL_STORAGE_MEMORY = {}
 
@@ -55,9 +33,9 @@ Cypress.Commands.add('restoreLocalStorage', () => {
 // todo: make sure that this is still compliant with 1.0
 //
 Cypress.Commands.add('testRoute', (route) => {
-  cy.location().should((loc) => {
-    expect(loc.hash).to.contain(route)
-  })
+    cy.location().should((loc) => {
+      expect(loc.hash).to.contain(route)
+    })
 })
 
 Cypress.Commands.add('quasar', { prevSubject: 'element' }, (subject, mode, option) => {
@@ -72,18 +50,18 @@ Cypress.Commands.add('quasar', { prevSubject: 'element' }, (subject, mode, optio
       })
   } else if (mode === 'grid') {
     cy.wrap(subject).within(() => {
-      cy.get('input').click({ force: true, multiple: true })
+      cy.get('input').click({ force: true, multiple: true });
     })
   } else if (mode === 'tag-list') {
     Object.keys(option)
-      .forEach((x) => {
-        cy.wrap(subject)
-          .within(() => {
-            cy.get('input')
-              .first()
-              .type(`${option[x]}{enter}`)
-          })
+    .forEach((x) => {
+      cy.wrap(subject)
+        .within(() => {
+          cy.get('input')
+            .first()
+            .type(`${option[x]}{enter}`)
       })
+    })
   } else {
     cy.wrap(subject)
       .invoke('show')
@@ -95,7 +73,7 @@ Cypress.Commands.add('quasar', { prevSubject: 'element' }, (subject, mode, optio
             cy.get('input:first')
               .type(option)
               .should('have.value', option)
-            break
+            break;
           case 'radio':
           case 'checkbox':
             cy.contains(option)
@@ -104,7 +82,7 @@ Cypress.Commands.add('quasar', { prevSubject: 'element' }, (subject, mode, optio
           default:
             break
         }
-      })
+    })
   }
 })
 
