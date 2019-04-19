@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import Vue from 'vue'
 require('firebase/auth')
 
 class FirebaseService {
@@ -10,19 +11,34 @@ class FirebaseService {
     return process.env.firebaseConfig
   }
 
-  test () {
-    return 'test'
-  }
-
   auth () {
     return firebase.auth()
   }
 
-  authenticate () {
-    return {
-      createUser: (email, password) => {},
-      login: (email, password) => {}
-    }
+  registerUser (email, password) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((user) => {
+          Vue.prototype.$currentUser = user
+          resolve(user)
+        })
+        .catch(error => {
+          reject(error)
+        })
+    })
+  }
+
+  login (email, password) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((user) => {
+          Vue.prototype.$currentUser = user
+          resolve(user)
+        })
+        .catch(error => {
+          reject(error)
+        })
+    })
   }
 }
 

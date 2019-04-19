@@ -26,31 +26,4 @@ export default ({ app, router, Vue }) => {
   //   // in our app
   //   Vue.prototype.$fb = firebase
   // }
-
-  // // Add auth methods to our Vue instance
-  // Vue.prototype.$login = (email, password) => {
-  //   return new Promise((resolve, reject) => {
-  //     firebase.auth().signInWithEmailAndPassword(email, password)
-  //       .then((user) => {
-  //         Vue.prototype.$currentUser = user
-  //         resolve(user)
-  //       })
-  //       .catch(error => {
-  //         reject(error)
-  //       })
-  //   })
-  // }
-
-  // Vue.prototype.$registerUser = (email, password) => {
-  //   return new Promise((resolve, reject) => {
-  //     firebase.auth().createUserWithEmailAndPassword(email, password)
-  //       .then((user) => {
-  //         Vue.prototype.$currentUser = user
-  //         resolve(user)
-  //       })
-  //       .catch(error => {
-  //         reject(error)
-  //       })
-  //   })
-  // }
 }
