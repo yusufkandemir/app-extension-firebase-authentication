@@ -5,9 +5,9 @@ const routes = [
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') }
-      // ,
       // { path: '/login', name: 'Login', component: () => import('components/Q-AE-Auth.vue') },
-      // { path: '/register', name: 'Register', component: () => import('components/Q-AE-Auth.vue') }
+      // { path: '/register', name: 'Register', component: () => import('components/Q-AE-Auth.vue') },
+      // { path: '/user', name: 'User', component: () => import('components/User.vue'), meta: { requiresAuth: true } }
     ]
   }
 ]

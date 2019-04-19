@@ -84,7 +84,7 @@ export default {
   // timer for our validations
   touchMap: new WeakMap(),
   created () {
-    console.log(this.$v)
+    console.log(this.$fb.test)
   },
   computed: {
     isRegisterUser () {

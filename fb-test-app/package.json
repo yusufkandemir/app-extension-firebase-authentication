@@ -19,12 +19,13 @@
     "test:e2e:CI": "cypress run"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.1.1",
     "eslint-plugin-cypress": "^2.2.1",
-    "quasar": "^1.0.0-beta.0"
+    "quasar": "^1.0.0-beta.17"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0-beta.0",
+    "@quasar/app": "^1.0.0-beta.18",
+    "@quasar/quasar-app-extension-dotenv": "^1.0.0-beta.3",
     "@quasar/quasar-app-extension-testing": "^1.0.0-beta.7",
     "@quasar/quasar-app-extension-testing-e2e-cypress": "^1.0.0-beta.5",
     "@quasar/quasar-app-extension-testing-unit-jest": "^1.0.0-beta.13",
@@ -34,7 +35,8 @@
     "eslint-loader": "^2.1.1",
     "eslint-plugin-vue": "^5.0.0",
     "firebase-mock": "^2.2.10",
-    "quasar-app-extension-firebase-authentication": "link:../firebase-authentication",
+    "flush-promises": "^1.0.2",
+    "quasar-app-extension-firebase-authentication": "link:../quasar-app-extension-firebase-authentication",
     "strip-ansi": "=3.0.1"
   },
   "engines": {

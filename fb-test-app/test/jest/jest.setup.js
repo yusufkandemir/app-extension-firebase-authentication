@@ -13,11 +13,11 @@ import chai from 'chai'
 // updated here: https://www.andrewsouthpaw.com/jest-chai/
 const originalNot = Object.getOwnPropertyDescriptor(chai.Assertion.prototype, 'not').get
 Object.defineProperty(chai.Assertion.prototype, 'not', {
-  get() {
+  get () {
     Object.assign(this, this.assignedNot)
     return originalNot.apply(this)
   },
-  set(newNot) {
+  set (newNot) {
     this.assignedNot = newNot
     return newNot
   }
@@ -33,10 +33,10 @@ global.expect = (actual) => {
   // Add middleware to Chai matchers to increment Jest assertions made
   const { assertionsMade } = originalExpect.getState()
   Object.defineProperty(chaiMatchers, 'to', {
-    get() {
+    get () {
       originalExpect.setState({ assertionsMade: assertionsMade + 1 })
       return chai.expect(actual)
-    },
+    }
   })
 
   const combinedMatchers = Object.assign(chaiMatchers, originalMatchers)
@@ -45,6 +45,6 @@ global.expect = (actual) => {
 Object.keys(originalExpect).forEach(key => (global.expect[key] = originalExpect[key]))
 
 // do this to make sure we don't get multiple hits from both webpacks when running SSR
-setTimeout(()=>{
+setTimeout(() => {
   // do nothing
 }, 1)
