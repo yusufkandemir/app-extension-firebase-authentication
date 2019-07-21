@@ -1,10 +1,41 @@
 import firebase from 'firebase/app'
-import Vue from 'vue'
-require('firebase/auth')
+import 'firebase/auth'
+
+let authInitialized = false
+let authPromise
 
 class FirebaseService {
+  currentUser
+
   constructor () {
     firebase.initializeApp(this.getCurrentConfig())
+
+    // Start the auth initialization process
+    this.ensureAuthIsInitialized()
+  }
+
+  async ensureAuthIsInitialized () {
+    // If auth is currently initializing, return that promise
+    if (authPromise) {
+      return authPromise
+    }
+
+    // Create the initialization promise
+    authPromise = new Promise((resolve, reject) => {
+      if (authInitialized) {
+        resolve()
+      } else {
+        // Create the observer only once on init
+        firebase.auth().onAuthStateChanged(async user => {
+          this.currentUser = user
+          authInitialized = true
+
+          resolve()
+        }, error => reject(error))
+      }
+    })
+
+    return authPromise
   }
 
   getCurrentConfig () {
@@ -18,15 +49,11 @@ class FirebaseService {
   async registerUser (email, password) {
     const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
 
-    Vue.prototype.$currentUser = user
-
     return user
   }
 
   async login (email, password) {
     const user = await firebase.auth().signInWithEmailAndPassword(email, password)
-
-    Vue.prototype.$currentUser = user
 
     return user
   }

@@ -123,7 +123,7 @@ export default {
           // If you want to push the user further
           // into your app uncomment the line below and add your route
           // this.$router.push('/SOME_AUTHENTICATION_GUARDED_ROUTE')
-          console.log('SUCCESS YOUR CURRENT USER OBJECT FROM FIREBASE IS:', this.$currentUser)
+          console.log('SUCCESS YOUR CURRENT USER OBJECT FROM FIREBASE IS:', this.$fb.currentUser)
           this.$q.notify({
             classes: 'text-weight-bold text-center',
             color: 'positive',
@@ -171,8 +171,8 @@ export default {
     },
     performAuthentication () {
       return this.isRegisterUser
-        ? this.$registerUser(this.email, this.password)
-        : this.$login(this.email, this.password)
+        ? this.$fb.registerUser(this.email, this.password)
+        : this.$fb.login(this.email, this.password)
     },
     resetFormFields () {
       this.email = null
