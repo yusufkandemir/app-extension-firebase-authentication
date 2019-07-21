@@ -5,5 +5,5 @@
  */
 
 module.exports = async function (api) {
-  api.render('./templates', {}, true)
+  api.render('./templates')
 }
