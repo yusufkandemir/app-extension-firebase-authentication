@@ -15,30 +15,20 @@ class FirebaseService {
     return firebase.auth()
   }
 
-  registerUser (email, password) {
-    return new Promise((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((user) => {
-          Vue.prototype.$currentUser = user
-          resolve(user)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
+  async registerUser (email, password) {
+    const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
+
+    Vue.prototype.$currentUser = user
+
+    return user
   }
 
-  login (email, password) {
-    return new Promise((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((user) => {
-          Vue.prototype.$currentUser = user
-          resolve(user)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
+  async login (email, password) {
+    const user = await firebase.auth().signInWithEmailAndPassword(email, password)
+
+    Vue.prototype.$currentUser = user
+
+    return user
   }
 }
 
